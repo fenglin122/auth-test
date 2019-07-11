@@ -20,7 +20,7 @@
         r.id, r.name, r.seq, r.description, r.delete_status, r.paltform_id, r.permission_role_id, r.is_admin, r.create_time,
         r.update_time
     </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="allColumn" />
     from perm_role
@@ -130,4 +130,47 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="allColumn"/>
+    from saas_role
+  </select>
+
+  <select id="selectCount" resultType="int">
+    select count(id)
+    from saas_role
+    <where>
+      <if test="query.name != null">
+        and name = #{query.name,jdbcType=VARCHAR}
+      </if>
+      <if test="query.status != null">
+        and delete_status = #{query.status,jdbcType=TINYINT}
+      </if>
+    </where>
+  </select>
+  <select id="selectList" resultMap="BaseResultMap">
+    select
+    <include refid="allColumn"/>
+    from saas_role
+    <where>
+      <if test="query.name != null">
+        and name = #{query.name,jdbcType=VARCHAR}
+      </if>
+      <if test="query.status != null">
+        and delete_status = #{query.status,jdbcType=TINYINT}
+      </if>
+    </where>
+    <if test="query.order != null">
+      order by ${query.order.desc} ${query.sort.desc}
+    </if>
+    limit #{query.startIndex}, #{query.count}
+  </select>
+  <select id="selectByUser" resultMap="BaseResultMap">
+    select
+    <include refid="fixedColumn"/>
+    from saas_role r,saas_user_role ur where r.id = ur.role_id
+    <if test="userId != null">
+      and ur.user_id = #{userId}
+    </if>
+  </select>
 </mapper>
