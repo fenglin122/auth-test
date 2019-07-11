@@ -7,7 +7,7 @@ import com.cehome.cloud.user.model.po.UserRole;
 import com.cehome.cloud.user.model.query.QueryBase;
 import com.cehome.cloud.user.model.query.SearchUserQuery;
 import com.cehome.cloud.user.model.query.UserQuery;
-import com.cehome.cloud.user.model.request.UserRequest;
+import com.cehome.cloud.user.model.request.UserReqDto;
 import com.cehome.cloud.user.model.response.UserResDto;
 import com.cehome.cloud.user.util.BeanUtils;
 import com.cehome.cloud.user.util.PasswordHelper;
@@ -46,26 +46,26 @@ public class UserInnerService{
 
     
     @Transactional(rollbackFor={Exception.class})
-    public int add(UserRequest userRequest) throws RuntimeException{
-        User user = BeanUtils.copy(userRequest,User.class);
+    public int add(UserReqDto userReqDto) throws RuntimeException{
+        User user = BeanUtils.copy(userReqDto,User.class);
         user.setCreateTime(Calendar.getInstance().getTime());
         user.setUpdateTime(Calendar.getInstance().getTime());
         PasswordHelper.encryptPassword(user);
         userMapper.insert(user);
         Integer userId = user.getId();
-        Set<UserRole> userRoles = checkRole(userRequest.getRoleIds(),userId);
+        Set<UserRole> userRoles = checkRole(userReqDto.getRoleIds(),userId);
         userRoleInnerService.add(userRoles);
         return 1;
     }
 
     
     @Transactional(rollbackFor={Exception.class})
-    public int update(UserRequest userRequest) {
-        User user = BeanUtils.copy(userRequest,User.class);
+    public int update(UserReqDto userReqDto) {
+        User user = BeanUtils.copy(userReqDto,User.class);
         user.setUpdateTime(Calendar.getInstance().getTime());
         userMapper.update(user);
         userRoleInnerService.deleteByUser(user.getId());
-        Set<UserRole> userRoles = checkRole(userRequest.getRoleIds(),user.getId());
+        Set<UserRole> userRoles = checkRole(userReqDto.getRoleIds(),user.getId());
         userRoleInnerService.add(userRoles);
         return userMapper.update(user);
     }
@@ -78,7 +78,7 @@ public class UserInnerService{
     }
 
     
-    public User selectByLoginName(String userName, Integer tenantId, Integer platformId) {
+    public User selectByLoginName(String userName, Integer platformId) {
         return userMapper.selectByLoginName(userName, platformId);
     }
 
@@ -88,12 +88,12 @@ public class UserInnerService{
     }
 
     
-    public User login(String loginName, String passwod, Integer tenantId, Integer platformId) {
+    public User login(String loginName, String passwod, Integer platformId) {
         return userMapper.selectByLoginNameAndPassword(loginName, passwod, platformId);
     }
 
     
-    public Page<UserResDto> search(String loginName, String phone, String orgId, Integer tenantId, Integer pageNo, Integer pageSize) {
+    public Page<UserResDto> search(String loginName, String phone, String orgId, Integer pageNo, Integer pageSize) {
         SearchUserQuery searchUserQuery = new SearchUserQuery();
         searchUserQuery.setPlatformId(1);
         searchUserQuery.setPhone(phone);
@@ -111,7 +111,7 @@ public class UserInnerService{
             searchUserQuery.setStartIndex((pageNo-1)*pageSize);
             searchUserQuery.setOrder(UserQuery.UserOrderBy.UPDATETIME);
             searchUserQuery.setSort(QueryBase.QuerySort.DESC);
-            page.setDatas(createUserVO(userMapper.selectList(searchUserQuery),1,tenantId,orgId));
+            page.setDatas(createUserVO(userMapper.selectList(searchUserQuery),1,orgId));
             page.setPageIndex(pageNo);
             page.setPageOffset((pageNo-1)*pageSize);
             page.setPageSize(pageSize);
@@ -146,7 +146,7 @@ public class UserInnerService{
         return userRoles;
     }
 
-    private List<UserResDto> createUserVO(List<User> users,Integer platformId,Integer tenantId,String orgId){
+    private List<UserResDto> createUserVO(List<User> users,Integer platformId,String orgId){
         List<UserResDto> userVOS = Lists.newArrayList();
         users.stream().forEach(user -> {
             StringBuffer roles = new StringBuffer();
@@ -165,12 +165,12 @@ public class UserInnerService{
     }
 
     private boolean checkUser(User user){
-        if (user == null) throw new NullPointerException("用户信息不能为空。");
-        if (StringUtils.isBlank(user.getLoginName())) throw new NullPointerException("账号不能为空。");
-        if (StringUtils.isBlank(user.getName())) throw new NullPointerException("姓名不能为空。");
-        if (StringUtils.isBlank(user.getPhone())) throw new NullPointerException("手机号不能为空。");
-        if (!StringUtil.checkMobile(user.getPhone())) throw new IllegalArgumentException("手机号格式无效。");
-        if (!StringUtils.isBlank(user.getEmail()) && !StringUtil.checkEmail(user.getEmail())) throw new IllegalArgumentException("邮箱格式无效。");
+        if (user == null) throw new MicroserviceException("用户信息不能为空。");
+        if (StringUtils.isBlank(user.getLoginName())) throw new MicroserviceException("账号不能为空。");
+        if (StringUtils.isBlank(user.getName())) throw new MicroserviceException("姓名不能为空。");
+        if (StringUtils.isBlank(user.getPhone())) throw new MicroserviceException("手机号不能为空。");
+        if (!StringUtil.checkMobile(user.getPhone())) throw new MicroserviceException("手机号格式无效。");
+        if (!StringUtils.isBlank(user.getEmail()) && !StringUtil.checkEmail(user.getEmail())) throw new MicroserviceException("邮箱格式无效。");
         return true;
     }
 }

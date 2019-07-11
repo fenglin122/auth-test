@@ -88,7 +88,7 @@ public class RoleInnerService {
         return roleMapper.selectAll(tenantId);
     }
 
-    public Page<Role> search(String name, Integer status, Integer platformId, Integer pageNo, Integer pageSize) {
+    public Page<Role> search(String name, Integer status, Integer platformId, Integer pageIndex, Integer pageSize) {
         RoleQuery roleQuery = new RoleQuery();
         roleQuery.setPlatformId(platformId);
         roleQuery.setName(name);
@@ -96,19 +96,19 @@ public class RoleInnerService {
         int count = roleMapper.selectCount(roleQuery);
         Page page = new Page();
         if (count > 0){
-            if (pageNo == null){
-                pageNo = 1;
+            if (pageIndex == null){
+                pageIndex = 1;
             }
             if (pageSize == null){
                 pageSize = 20;
             }
             roleQuery.setCount(pageSize);
-            roleQuery.setStartIndex((pageNo-1)*pageSize);
+            roleQuery.setStartIndex((pageIndex-1)*pageSize);
             roleQuery.setOrder(RoleQuery.RoleOrderBy.UPDATETIME);
             roleQuery.setSort(QueryBase.QuerySort.DESC);
             page.setDatas(roleMapper.selectList(roleQuery));
-            page.setPageIndex(pageNo);
-            page.setPageOffset((pageNo-1)*pageSize);
+            page.setPageIndex(pageIndex);
+            page.setPageOffset((pageIndex-1)*pageSize);
             page.setPageSize(pageSize);
             page.setTotalRecord(count);
             int totalPage = count>0?(count/pageSize+(count%pageSize==0?0:1)):0;

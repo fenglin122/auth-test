@@ -2,7 +2,7 @@ package com.cehome.cloud.user.api;
 
 import com.cehome.cloud.common.object.BaseResult;
 import com.cehome.cloud.user.UserAPI;
-import com.cehome.cloud.user.model.request.UserRequest;
+import com.cehome.cloud.user.model.request.UserReqDto;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface UserService {
 
     @RequestMapping(value = UserAPI.PATH_USER + "/login",method = RequestMethod.POST)
-    public BaseResult login(@RequestBody UserRequest userRequest);
+    public BaseResult login(@RequestBody UserReqDto userReqDto);
 
     @RequestMapping(value = UserAPI.PATH_USER + "/info",method = RequestMethod.GET)
     public Boolean info(@RequestParam(value = "info",defaultValue = "") String info);

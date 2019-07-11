@@ -5,7 +5,7 @@ import com.alibaba.fastjson.JSON;
 /**
  * Created by hyl on 2019/04/09
  **/
-public class PermissionRequest {
+public class PermissionReqDto {
 
     private Integer id;
     /**

@@ -5,11 +5,10 @@ import com.cehome.cloud.user.model.po.Permission;
 import com.cehome.cloud.user.model.po.Role;
 import com.cehome.cloud.user.model.po.RolePermission;
 import com.cehome.cloud.user.util.TreeUtil;
+import com.cehome.utils.exception.MicroserviceException;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import org.apache.commons.collections.CollectionUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,8 +27,6 @@ import java.util.stream.Collectors;
  */
 @Service
 public class PermissionInnerService {
-
-    Logger logger = LoggerFactory.getLogger(PermissionInnerService.class);
 
     @Autowired
     private PermissionMapper permissionMapper;
@@ -62,10 +59,10 @@ public class PermissionInnerService {
     public int grantPermission(Integer roleId, List<Integer> permissionIds) {
         Role role = roleInnerService.selectById(roleId);
         if (role == null){
-            throw new NullPointerException("角色ID["+roleId+"]不存在");
+            throw new MicroserviceException("角色ID["+roleId+"]不存在");
         }
         if (CollectionUtils.isEmpty(permissionIds)){
-            throw new NullPointerException("权限ID为空");
+            throw new MicroserviceException("权限ID为空");
         }
         rolePermissionInnerService.deleteByRole(roleId);
         Set<RolePermission> rolePermissions = Sets.newHashSet();
@@ -82,15 +79,14 @@ public class PermissionInnerService {
 
     public List<Permission> permssionAll() {
         List<Permission> permissions = permissionMapper.permissionAll();
-        logger.info("permssionAll:{}",permissions);
         return toTree(permissions);
     }
 
-    public List<Permission> permssionList(Integer tenantId) {
+    public List<Permission> permssionList() {
         return permissionMapper.permissionAll();
     }
 
-    public List<Permission> selectByUser(Integer userId, Integer tenantId) {
+    public List<Permission> selectByUser(Integer userId) {
         return toTree(listByUser(userId));
     }
 
@@ -104,7 +100,6 @@ public class PermissionInnerService {
                         getParentPerm(list,permissionMapper.selectById(permission.getParentId()),ids)
                 );
         list.addAll(permissions);
-        logger.info("selectByUser:{}",list);
         return list;
     }
 

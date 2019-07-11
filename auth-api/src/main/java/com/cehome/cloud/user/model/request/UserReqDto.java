@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by hyl on 2019/04/08
  **/
-public class UserRequest {
+public class UserReqDto {
 
     private Integer id;
 

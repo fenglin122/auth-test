@@ -3,32 +3,24 @@ package com.cehome.cloud.user.model.request;
 import com.alibaba.fastjson.JSON;
 
 /**
- * Created by hyl on 2019/04/10
+ * Created by hyl on 2019/04/09
  **/
-public class RoleRequest {
+public class ResourceReqDto {
 
     private Integer id;
 
-    /**
-     * 角色名
-     */
     private String name;
-    /**
-     * 排序号
-     */
-    private Integer seq;
-    /**
-     * 简介
-     */
+
+    private String url;
+
     private String description;
+
     /**
-     * 状态
+     * 权限ID
      */
-    private Integer status;
-    /**
-     * 平台ID
-     */
-    private Integer paltformId;
+    private Integer pid;
+
+    private String perms;
 
     public Integer getId() {
         return id;
@@ -46,12 +38,12 @@ public class RoleRequest {
         this.name = name;
     }
 
-    public Integer getSeq() {
-        return seq;
+    public String getUrl() {
+        return url;
     }
 
-    public void setSeq(Integer seq) {
-        this.seq = seq;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public String getDescription() {
@@ -62,21 +54,20 @@ public class RoleRequest {
         this.description = description;
     }
 
-    public Integer getStatus() {
-        return status;
+    public Integer getPid() {
+        return pid;
     }
 
-    public void setStatus(Integer status) {
-        this.status = status;
+    public void setPid(Integer pid) {
+        this.pid = pid;
     }
 
-
-    public Integer getPaltformId() {
-        return paltformId;
+    public String getPerms() {
+        return perms;
     }
 
-    public void setPaltformId(Integer paltformId) {
-        this.paltformId = paltformId;
+    public void setPerms(String perms) {
+        this.perms = perms;
     }
 
     @Override

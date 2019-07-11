@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by hyl on 2019/04/17
  **/
-public class PermissionGrantRequest {
+public class PermissionGrantReqDto {
 
     private Integer roleId;
     private List<Integer> permissionIds;

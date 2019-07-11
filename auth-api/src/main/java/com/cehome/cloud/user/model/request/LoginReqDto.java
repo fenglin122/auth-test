@@ -5,7 +5,7 @@ import com.alibaba.fastjson.JSON;
 /**
  * Created by hyl on 2019/04/04
  **/
-public class LoginRequest {
+public class LoginReqDto {
 
     private String loginName;
 
