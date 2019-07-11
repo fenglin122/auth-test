@@ -1,6 +1,6 @@
 package com.cehome.cloud.user.service;
 
-import com.cehome.cloud.user.mapper.ResourceMapper;
+import com.cehome.cloud.user.dao.ResourceMapper;
 import com.cehome.cloud.user.model.po.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

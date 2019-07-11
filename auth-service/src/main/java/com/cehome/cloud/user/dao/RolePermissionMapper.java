@@ -1,4 +1,4 @@
-package com.cehome.cloud.user.mapper;
+package com.cehome.cloud.user.dao;
 
 import com.cehome.cloud.user.model.po.RolePermission;
 import org.apache.ibatis.annotations.Param;

@@ -154,7 +154,7 @@ public class AuthorityUpdateService implements DisposableBean, ApplicationListen
         // 检查用户名是否存在
         filterChainDefinitionMap.put("/user/validate", "anon");
         filterChainDefinitionMap.put("/logout", "logout");
-        List<Permission> permissions = permissionInnerService.permssionList(1);
+        List<Permission> permissions = permissionInnerService.permssionList();
         permissions.stream().filter(permission -> StringUtils.isNotBlank(permission.getUrl()))
                 .forEach(permission -> filterChainDefinitionMap.put(permission.getUrl(), "authc[" + permission.getPerms() + "]"));
 

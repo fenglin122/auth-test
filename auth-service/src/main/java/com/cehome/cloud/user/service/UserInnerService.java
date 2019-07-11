@@ -1,7 +1,7 @@
 package com.cehome.cloud.user.service;
 
 import com.cehome.cloud.common.dao.base.Page;
-import com.cehome.cloud.user.mapper.UserMapper;
+import com.cehome.cloud.user.dao.UserMapper;
 import com.cehome.cloud.user.model.po.User;
 import com.cehome.cloud.user.model.po.UserRole;
 import com.cehome.cloud.user.model.query.QueryBase;

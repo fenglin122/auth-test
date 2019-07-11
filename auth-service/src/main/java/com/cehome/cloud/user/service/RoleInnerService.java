@@ -2,7 +2,7 @@ package com.cehome.cloud.user.service;
 
 import com.cehome.cloud.common.dao.base.Page;
 import com.cehome.cloud.user.config.shiro.jwt.JwtConstants;
-import com.cehome.cloud.user.mapper.RoleMapper;
+import com.cehome.cloud.user.dao.RoleMapper;
 import com.cehome.cloud.user.model.enums.RoleStatus;
 import com.cehome.cloud.user.model.po.Permission;
 import com.cehome.cloud.user.model.po.Role;

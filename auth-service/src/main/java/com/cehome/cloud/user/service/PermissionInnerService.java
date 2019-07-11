@@ -1,6 +1,6 @@
 package com.cehome.cloud.user.service;
 
-import com.cehome.cloud.user.mapper.PermissionMapper;
+import com.cehome.cloud.user.dao.PermissionMapper;
 import com.cehome.cloud.user.model.po.Permission;
 import com.cehome.cloud.user.model.po.Role;
 import com.cehome.cloud.user.model.po.RolePermission;

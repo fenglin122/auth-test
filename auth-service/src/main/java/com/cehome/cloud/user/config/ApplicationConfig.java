@@ -1,5 +1,6 @@
 package com.cehome.cloud.user.config;
 
+import com.cehome.cache.redis.RedisCacheProvider;
 import com.cehomex.spring.mybatis.ReadWriteInterceptor;
 import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -108,6 +109,12 @@ public class ApplicationConfig {
 
         return new SqlSessionTemplate(sessionFactory);
     }
+
+    @Bean(name = "redisCacheProviderStr")
+    public RedisCacheProvider createCacheProviderStr(){
+        return new RedisCacheProvider("str");
+    }
+
 
 //    /**
 //     * @return ServletListenerRegistrationBean<CMQInitialListener>

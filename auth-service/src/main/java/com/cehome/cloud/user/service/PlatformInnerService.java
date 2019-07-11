@@ -1,6 +1,6 @@
 package com.cehome.cloud.user.service;
 
-import com.cehome.cloud.user.mapper.PlatformMapper;
+import com.cehome.cloud.user.dao.PlatformMapper;
 import com.cehome.cloud.user.model.po.Platform;
 import com.cehome.cloud.user.model.query.PlatformQuery;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
 package com.cehome.cloud.user.service;
 
-import com.cehome.cloud.user.mapper.UserRoleMapper;
+import com.cehome.cloud.user.dao.UserRoleMapper;
 import com.cehome.cloud.user.model.po.UserRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

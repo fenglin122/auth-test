@@ -1,4 +1,4 @@
-package com.cehome.cloud.user.mapper;
+package com.cehome.cloud.user.dao;
 
 /**
  * Created by hyl on 2019/03/29

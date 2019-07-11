@@ -14,7 +14,7 @@ public class MapperScannerConfig {
         //获取之前注入的beanName为sqlSessionFactory的对象
         mapperScannerConfigurer.setSqlSessionFactoryBeanName("sqlSessionFactory");
         //指定xml配置文件的路径
-        mapperScannerConfigurer.setBasePackage("com.cehome.cloud.user.mapper");
+        mapperScannerConfigurer.setBasePackage("com.cehome.cloud.user.dao");
         return mapperScannerConfigurer;
     }
 }

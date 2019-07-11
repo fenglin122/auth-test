@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cehome.cloud.user.dao.RolePermissionMapper" >
+  <resultMap id="BaseResultMap" type="com.cehome.cloud.user.model.po.RolePermission" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="role_id" property="roleId" jdbcType="INTEGER" />
+    <result column="permission_id" property="permissionId" jdbcType="INTEGER" />
+    <result column="platform_id" property="platformId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="delete_status" property="deleteStatus" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="allColumn" >
+    id, role_id, permission_id, platform_id, create_time, update_time, delete_status
+  </sql>
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="allColumn" />
+    from perm_role_permission
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectByRole" resultMap="BaseResultMap">
+    select
+    <include refid="allColumn" />
+    from perm_role_permission
+    where role_id = #{roleId,jdbcType=BIGINT}
+  </select>
+  <select id="selectByPermission" resultMap="BaseResultMap">
+    select
+    <include refid="allColumn" />
+    from perm_role_permission
+    where permission_id = #{permissionId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from perm_role_permission
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cehome.cloud.user.model.po.RolePermission">
+    insert into perm_role_permission (role_id, permission_id, platform_id,
+    create_time, update_time, delete_status
+    )
+    values
+    <foreach collection="rolePermissions" item="rolePermission" index="index" separator=",">
+      (
+      #{rolePermission.roleId,jdbcType=INTEGER},
+      #{rolePermission.permissionId,jdbcType=INTEGER},
+      #{rolePermission.platformId,jdbcType=INTEGER},
+      #{rolePermission.createTime,jdbcType=BIGINT},
+      #{rolePermission.updateTime,jdbcType=BIGINT},
+      0
+      )
+    </foreach>
+  </insert>
+  <delete id="deleteByPermissionId">
+    delete from perm_role_permission
+    where permission_id = #{permissionId}
+    and role_id in
+    <foreach collection="roleIds" index="index" item="roleId" open="(" separator="," close=")">
+      #{roleId}
+    </foreach>
+  </delete>
+
+  <delete id="deleteByRoleId">
+    delete from perm_role_permission
+    where role_id = #{roleId}
+    and permission_id in
+    <foreach collection="permissionIds" index="index" item="permissionId" open="(" separator="," close=")">
+      #{permissionId}
+    </foreach>
+  </delete>
+
+  <delete id="deleteByPermission">
+    delete from perm_role_permission
+    where permission_id = #{permissionId}
+  </delete>
+
+  <delete id="deleteByRole">
+    delete from perm_role_permission
+    where role_id = #{roleId}
+  </delete>
+</mapper>
