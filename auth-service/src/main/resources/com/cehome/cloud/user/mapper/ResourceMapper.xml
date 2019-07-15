@@ -28,93 +28,93 @@
   <insert id="insert" parameterType="com.cehome.cloud.user.model.po.Resource" >
     insert into perm_resource
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
+      <if test="resource.id != null" >
         id,
       </if>
-      <if test="name != null" >
+      <if test="resource.name != null" >
         name,
       </if>
-      <if test="url != null" >
+      <if test="resource.url != null" >
         url,
       </if>
-      <if test="description != null" >
+      <if test="resource.description != null" >
         description,
       </if>
-      <if test="pid != null" >
+      <if test="resource.pid != null" >
         pid,
       </if>
-      <if test="createTime != null" >
+      <if test="resource.createTime != null" >
         create_time,
       </if>
-      <if test="updateTime != null" >
+      <if test="resource.updateTime != null" >
         update_time,
       </if>
-      <if test="deleteStatus != null" >
+      <if test="resource.deleteStatus != null" >
         delete_status,
       </if>
-      <if test="perms != null" >
+      <if test="resource.perms != null" >
         perms,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
+      <if test="resource.id != null" >
+        #{resource.id,jdbcType=INTEGER},
       </if>
-      <if test="name != null" >
-        #{name,jdbcType=VARCHAR},
+      <if test="resource.name != null" >
+        #{resource.name,jdbcType=VARCHAR},
       </if>
-      <if test="url != null" >
-        #{url,jdbcType=VARCHAR},
+      <if test="resource.url != null" >
+        #{resource.url,jdbcType=VARCHAR},
       </if>
-      <if test="description != null" >
-        #{description,jdbcType=VARCHAR},
+      <if test="resource.description != null" >
+        #{resource.description,jdbcType=VARCHAR},
       </if>
-      <if test="pid != null" >
-        #{pid,jdbcType=INTEGER},
+      <if test="resource.pid != null" >
+        #{resource.pid,jdbcType=INTEGER},
       </if>
-      <if test="createTime != null" >
-        #{createTime,jdbcType=TIMESTAMP},
+      <if test="resource.createTime != null" >
+        #{resource.createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updateTime != null" >
-        #{updateTime,jdbcType=TIMESTAMP},
+      <if test="resource.updateTime != null" >
+        #{resource.updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="deleteStatus != null" >
-        #{deleteStatus,jdbcType=TINYINT},
+      <if test="resource.deleteStatus != null" >
+        #{resource.deleteStatus,jdbcType=TINYINT},
       </if>
-      <if test="perms != null" >
-        #{perms,jdbcType=VARCHAR},
+      <if test="resource.perms != null" >
+        #{resource.perms,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
   <update id="update" parameterType="com.cehome.cloud.user.model.po.Resource" >
     update perm_resource
     <set >
-      <if test="name != null" >
-        name = #{name,jdbcType=VARCHAR},
+      <if test="resource.name != null" >
+        name = #{resource.name,jdbcType=VARCHAR},
       </if>
-      <if test="url != null" >
-        url = #{url,jdbcType=VARCHAR},
+      <if test="resource.url != null" >
+        url = #{resource.url,jdbcType=VARCHAR},
       </if>
-      <if test="description != null" >
-        description = #{description,jdbcType=VARCHAR},
+      <if test="resource.description != null" >
+        description = #{resource.description,jdbcType=VARCHAR},
       </if>
-      <if test="pid != null" >
-        pid = #{pid,jdbcType=INTEGER},
+      <if test="resource.pid != null" >
+        pid = #{resource.pid,jdbcType=INTEGER},
       </if>
-      <if test="createTime != null" >
-        create_time = #{createTime,jdbcType=TIMESTAMP},
+      <if test="resource.createTime != null" >
+        create_time = #{resource.createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updateTime != null" >
-        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      <if test="resource.updateTime != null" >
+        update_time = #{resource.updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="deleteStatus != null" >
-        delete_status = #{deleteStatus,jdbcType=TINYINT},
+      <if test="resource.deleteStatus != null" >
+        delete_status = #{resource.deleteStatus,jdbcType=TINYINT},
       </if>
-      <if test="perms != null" >
-        perms = #{perms,jdbcType=VARCHAR},
+      <if test="resource.perms != null" >
+        perms = #{resource.perms,jdbcType=VARCHAR},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{resource.id,jdbcType=INTEGER}
   </update>
   <select id="selectByPid" resultMap="BaseResultMap" >
     select

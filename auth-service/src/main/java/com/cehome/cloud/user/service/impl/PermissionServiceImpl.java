@@ -13,6 +13,7 @@ import com.cehome.utils.exception.MicroserviceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -38,11 +39,11 @@ public class PermissionServiceImpl implements PermissionService {
         return permissionInnerService.update(permission);
     }
 
-    public Permission getById(Integer permission) {
-        return permissionInnerService.selectById(permission);
+    public Permission getById(@RequestParam("id") Integer id) {
+        return permissionInnerService.selectById(id);
     }
 
-    public Integer deleteById(Integer id) {
+    public Integer deleteById(@RequestParam("id") Integer id) {
         return permissionInnerService.deleteById(id);
     }
 
@@ -77,7 +78,7 @@ public class PermissionServiceImpl implements PermissionService {
         return permissionInnerService.selectListByUser(Integer.parseInt(shiroUser.getId()));
     }
 
-    public List<Integer> listpermIdsByRole(Integer roleId) {
+    public List<Integer> listPermIdsByRole(@RequestParam("roleId") Integer roleId) {
         return permissionInnerService.selectByRole(roleId);
     }
 }

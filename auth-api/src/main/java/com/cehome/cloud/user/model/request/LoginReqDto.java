@@ -1,6 +1,7 @@
 package com.cehome.cloud.user.model.request;
 
 import com.alibaba.fastjson.JSON;
+import com.cehome.utils.FastjsonUtils;
 
 /**
  * Created by hyl on 2019/04/04
@@ -49,6 +50,6 @@ public class LoginReqDto {
 
     @Override
     public String toString() {
-        return JSON.toJSONString(this);
+        return FastjsonUtils.toJSONString(this);
     }
 }

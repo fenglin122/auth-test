@@ -8,6 +8,7 @@ import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -48,7 +49,7 @@ public interface PermissionService {
      * @return
      */
     @RequestMapping(value = UserAPI.PATH_PERMS + "/getById", method = RequestMethod.GET)
-    Permission getById(Integer permission);
+    Permission getById(@RequestParam("id") Integer id);
 
     /**
      * 通过主键ID删除菜单或者按钮等vue页面
@@ -56,7 +57,7 @@ public interface PermissionService {
      * @return
      */
     @RequestMapping(value = UserAPI.PATH_PERMS + "/delete", method = RequestMethod.GET)
-    Integer deleteById(Integer id);
+    Integer deleteById(@RequestParam("id") Integer id);
 
     /**
      * 给角色分配权限
@@ -103,6 +104,6 @@ public interface PermissionService {
      * @param
      * @return
      */
-    @RequestMapping(value = UserAPI.PATH_PERMS + "/listpermIdsByRole", method = RequestMethod.GET)
-    List<Integer> listpermIdsByRole(Integer roleId);
+    @RequestMapping(value = UserAPI.PATH_PERMS + "/listPermIdsByRole", method = RequestMethod.GET)
+    List<Integer> listPermIdsByRole(@RequestParam("roleId") Integer roleId);
 }

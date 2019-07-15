@@ -26,7 +26,7 @@ public interface RoleService {
      * @return
      */
     @RequestMapping(value = UserAPI.PATH_ROLE + "/add",method = RequestMethod.POST)
-    public Integer add(@RequestBody RoleReqDto roleReqDto);
+    Integer add(@RequestBody RoleReqDto roleReqDto);
 
     /**
      * 更新角色
@@ -34,7 +34,7 @@ public interface RoleService {
      * @return
      */
     @RequestMapping(value = UserAPI.PATH_ROLE + "/update", method = RequestMethod.POST)
-    public Integer update(@RequestBody RoleReqDto roleReqDto);
+    Integer update(@RequestBody RoleReqDto roleReqDto);
 
     /**
      * 根据角色ID获取角色详情
@@ -42,7 +42,7 @@ public interface RoleService {
      * @return
      */
     @RequestMapping(value = UserAPI.PATH_ROLE + "/getById", method = RequestMethod.GET)
-    public Role getById(@RequestParam("roleId") Integer roleId);
+    Role getById(@RequestParam("roleId") Integer roleId);
 
     /**
      * 根据角色ID删除角色
@@ -50,7 +50,7 @@ public interface RoleService {
      * @return
      */
     @RequestMapping(value = UserAPI.PATH_ROLE + "/delete", method = RequestMethod.GET)
-    public Integer deleteById(@RequestParam("id")Integer id);
+    Integer deleteById(@RequestParam("id")Integer id);
 
     /**
      * 获取角色分页列表
@@ -58,7 +58,7 @@ public interface RoleService {
      * @return
      */
     @RequestMapping(value = UserAPI.PATH_ROLE + "/page", method = RequestMethod.GET)
-    public Page<Role> page(@RequestParam("name") String name, @RequestParam("status") Integer status, @RequestParam("pageIndex") Integer pageIndex, @RequestParam("pageSize")Integer pageSize);
+    Page<Role> page(@RequestParam("name") String name, @RequestParam("status") Integer status, @RequestParam("pageIndex") Integer pageIndex, @RequestParam("pageSize")Integer pageSize);
 
     /**
      * 获取角色列表
@@ -66,6 +66,6 @@ public interface RoleService {
      * @return
      */
     @RequestMapping(value = UserAPI.PATH_ROLE + "/listAll", method = RequestMethod.GET)
-    public List<Role> listAll();
+    List<Role> listAll();
 
 }

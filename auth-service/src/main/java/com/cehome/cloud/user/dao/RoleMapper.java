@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface RoleMapper extends BaseMapper {
-    int deleteById(@Param("id") Integer id, @Param("tenantId") Integer tenantId);
+    int deleteById(@Param("id") Integer id);
 
     int insert(@Param("role") Role role);
 
@@ -15,7 +15,7 @@ public interface RoleMapper extends BaseMapper {
 
     int update(@Param("role") Role role);
 
-    List<Role> selectAll(@Param("tenantId") Integer tenantId);
+    List<Role> selectAll();
 
     int selectCount(@Param("query") RoleQuery roleQuery);
 

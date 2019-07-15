@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthorityVerifyServiceImpl implements AuthorityVerifyService {
     @Override
     public Boolean isAuthority(String url) {
-        if ("/test/index".equals(url)){
-            return Boolean.TRUE;
-        }
-        return Boolean.FALSE;
-//        return SecurityUtils.getSubject().isPermitted(url);
+//        if ("/test/index".equals(url)){
+//            return Boolean.TRUE;
+//        }
+//        return Boolean.FALSE;
+        return SecurityUtils.getSubject().isPermitted(url);
     }
 }

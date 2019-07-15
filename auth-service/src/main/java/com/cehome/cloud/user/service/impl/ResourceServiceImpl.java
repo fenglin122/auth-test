@@ -8,6 +8,7 @@ import com.cehome.cloud.user.service.ResourceInnerService;
 import com.cehome.cloud.user.util.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -36,12 +37,12 @@ public class ResourceServiceImpl implements ResourceService {
         return resourceInnerService.update(resource);
     }
 
-    public Resource getById(Integer permission) {
-        return resourceInnerService.selectById(permission);
+    public Resource getById(@RequestParam("id") Integer id) {
+        return resourceInnerService.selectById(id);
     }
 
     @RefreshFilterChain
-    public Integer deleteById(Integer id) {
+    public Integer deleteById(@RequestParam("id") Integer id) {
         return resourceInnerService.deleteById(id);
     }
 

@@ -10,7 +10,7 @@
     <result column="sort" property="sort" jdbcType="TINYINT" />
     <result column="status" property="status" jdbcType="TINYINT" />
     <result column="type" property="type" jdbcType="TINYINT" />
-    <result column="paltform_id" property="paltformId" jdbcType="INTEGER" />
+    <result column="paltform_id" property="platformId" jdbcType="INTEGER" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
     <result column="perms" property="perms" jdbcType="VARCHAR" />
@@ -36,117 +36,117 @@
   <insert id="insert" parameterType="com.cehome.cloud.user.model.po.Permission" >
     insert into perm_permission
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
+      <if test="perm.id != null" >
         id,
       </if>
-      <if test="name != null" >
+      <if test="perm.name != null" >
         name,
       </if>
-      <if test="url != null" >
+      <if test="perm.url != null" >
         url,
       </if>
-      <if test="icon != null" >
+      <if test="perm.icon != null" >
         icon,
       </if>
-      <if test="parentId != null" >
+      <if test="perm.parentId != null" >
         parent_id,
       </if>
-      <if test="sort != null" >
+      <if test="perm.sort != null" >
         sort,
       </if>
-      <if test="status != null" >
+      <if test="perm.status != null" >
         status,
       </if>
-      <if test="type != null" >
+      <if test="perm.type != null" >
         type,
       </if>
-      <if test="paltformId != null" >
+      <if test="perm.platformId != null" >
         paltform_id,
       </if>
-      <if test="createTime != null" >
+      <if test="perm.createTime != null" >
         create_time,
       </if>
-      <if test="updateTime != null" >
+      <if test="perm.updateTime != null" >
         update_time,
       </if>
-      <if test="perms != null" >
+      <if test="perm.perms != null" >
         perms,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
+      <if test="perm.id != null" >
+        #{perm.id,jdbcType=INTEGER},
       </if>
-      <if test="name != null" >
-        #{name,jdbcType=VARCHAR},
+      <if test="perm.name != null" >
+        #{perm.name,jdbcType=VARCHAR},
       </if>
-      <if test="url != null" >
-        #{url,jdbcType=VARCHAR},
+      <if test="perm.url != null" >
+        #{perm.url,jdbcType=VARCHAR},
       </if>
-      <if test="icon != null" >
-        #{icon,jdbcType=VARCHAR},
+      <if test="perm.icon != null" >
+        #{perm.icon,jdbcType=VARCHAR},
       </if>
-      <if test="parentId != null" >
-        #{parentId,jdbcType=INTEGER},
+      <if test="perm.parentId != null" >
+        #{perm.parentId,jdbcType=INTEGER},
       </if>
-      <if test="sort != null" >
-        #{sort,jdbcType=TINYINT},
+      <if test="perm.sort != null" >
+        #{perm.sort,jdbcType=TINYINT},
       </if>
-      <if test="status != null" >
-        #{status,jdbcType=TINYINT},
+      <if test="perm.status != null" >
+        #{perm.status,jdbcType=TINYINT},
       </if>
-      <if test="type != null" >
-        #{type,jdbcType=TINYINT},
+      <if test="perm.type != null" >
+        #{perm.type,jdbcType=TINYINT},
       </if>
-      <if test="paltformId != null" >
-        #{paltformId,jdbcType=INTEGER},
+      <if test="perm.platformId != null" >
+        #{perm.platformId,jdbcType=INTEGER},
       </if>
-      <if test="createTime != null" >
-        #{createTime,jdbcType=TIMESTAMP},
+      <if test="perm.createTime != null" >
+        #{perm.createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updateTime != null" >
-        #{updateTime,jdbcType=TIMESTAMP},
+      <if test="perm.updateTime != null" >
+        #{perm.updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="perms != null" >
-        #{perms,jdbcType=VARCHAR},
+      <if test="perm.perms != null" >
+        #{perm.perms,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
   <update id="update" parameterType="com.cehome.cloud.user.model.po.Permission" >
     update perm_permission
     <set >
-      <if test="name != null" >
-        name = #{name,jdbcType=VARCHAR},
+      <if test="perm.name != null" >
+        name = #{perm.name,jdbcType=VARCHAR},
       </if>
-      <if test="url != null" >
-        url = #{url,jdbcType=VARCHAR},
+      <if test="perm.url != null" >
+        url = #{perm.url,jdbcType=VARCHAR},
       </if>
-      <if test="icon != null" >
-        icon = #{icon,jdbcType=VARCHAR},
+      <if test="perm.icon != null" >
+        icon = #{perm.icon,jdbcType=VARCHAR},
       </if>
-      <if test="parentId != null" >
-        parent_id = #{parentId,jdbcType=INTEGER},
+      <if test="perm.parentId != null" >
+        parent_id = #{perm.parentId,jdbcType=INTEGER},
       </if>
-      <if test="sort != null" >
-        sort = #{sort,jdbcType=TINYINT},
+      <if test="perm.sort != null" >
+        sort = #{perm.sort,jdbcType=TINYINT},
       </if>
-      <if test="status != null" >
-        status = #{status,jdbcType=TINYINT},
+      <if test="perm.status != null" >
+        status = #{perm.status,jdbcType=TINYINT},
       </if>
-      <if test="type != null" >
-        type = #{type,jdbcType=TINYINT},
+      <if test="perm.type != null" >
+        type = #{perm.type,jdbcType=TINYINT},
       </if>
-      <if test="paltformId != null" >
-        paltform_id = #{paltformId,jdbcType=INTEGER},
+      <if test="perm.platformId != null" >
+        paltform_id = #{perm.platformId,jdbcType=INTEGER},
       </if>
-      <if test="createTime != null" >
-        create_time = #{createTime,jdbcType=TIMESTAMP},
+      <if test="perm.createTime != null" >
+        create_time = #{perm.createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updateTime != null" >
-        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      <if test="perm.updateTime != null" >
+        update_time = #{perm.updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="perms != null" >
-        perms = #{perms,jdbcType=VARCHAR},
+      <if test="perm.perms != null" >
+        perms = #{perm.perms,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}

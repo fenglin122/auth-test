@@ -67,11 +67,13 @@ public class AuthorityUpdateService implements DisposableBean, ApplicationListen
     @Override
     public void onApplicationEvent(EmbeddedServletContainerInitializedEvent event) {
         port = event.getEmbeddedServletContainer().getPort();
-        logger.info("port={}", port);
         if (producer == null) createKafkaProducer();
         if (consumer == null) createKafkaConsumer();
     }
 
+    /**
+     * 创建kafka生产者实例，用于权限更新后产生一条更新权限的消息
+     */
     private void createKafkaProducer() {
         Properties props = new Properties();
         props.put("bootstrap.servers", kafkaServers);
@@ -82,11 +84,13 @@ public class AuthorityUpdateService implements DisposableBean, ApplicationListen
         props.put("buffer.memory", 33554432);
         props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
         props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
-
         producer = new KafkaProducer<>(props);
-
     }
 
+    /**
+     * 创建kafka消费者实例，用于消费权限更新消息更新内存中的权限信息，
+     * 这样设置后不需要重启应用或者重新登录系统就可以更新用户的权限
+     */
     private void createKafkaConsumer() {
         Properties props = new Properties();
         props.put("bootstrap.servers", kafkaServers);
@@ -154,21 +158,15 @@ public class AuthorityUpdateService implements DisposableBean, ApplicationListen
         // 检查用户名是否存在
         filterChainDefinitionMap.put("/user/validate", "anon");
         filterChainDefinitionMap.put("/logout", "logout");
+        //菜单或按钮权限设置
         List<Permission> permissions = permissionInnerService.permssionList();
         permissions.stream().filter(permission -> StringUtils.isNotBlank(permission.getUrl()))
-                .forEach(permission -> filterChainDefinitionMap.put(permission.getUrl(), "authc[" + permission.getPerms() + "]"));
+                .forEach(permission -> filterChainDefinitionMap.put(permission.getUrl(), "perms[" + permission.getPerms() + "]"));
 
+        //菜单或按钮对应的接口权限限制
         List<Resource> resourceList = resourceInnerService.listAll();
-        for (Resource resource : resourceList) {
-            String url = resource.getUrl();
-            if (url != null) {
-//                if (resource.getHttpMethod() != null && !"".equals(resource.getHttpMethod())) {
-//                    url += ("==" + resource.getHttpMethod());
-//                }
-                String perms = "authc[" + resource.getPerms() + "]";
-                filterChainDefinitionMap.put(url, perms);
-            }
-        }
+        resourceList.stream().filter(resource -> StringUtils.isNotBlank(resource.getPerms()))
+                .forEach(resource -> filterChainDefinitionMap.put(resource.getUrl(), "perms[" + resource.getPerms() + "]"));
 
         filterChainDefinitionMap.put("/**", "authc");
         return filterChainDefinitionMap;
@@ -198,7 +196,7 @@ public class AuthorityUpdateService implements DisposableBean, ApplicationListen
                 String chainDefinition = entry.getValue().trim().replace(" ", "");
                 manager.createChain(url, chainDefinition);
             }
-            logger.info("更新 Shiro 过滤器链");
+            logger.info("update Shiro filter chain");
         }
     }
 }

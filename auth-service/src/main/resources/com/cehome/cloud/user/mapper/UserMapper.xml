@@ -34,138 +34,138 @@
   <insert id="insert" parameterType="com.cehome.cloud.user.model.po.User" >
     insert into perm_user
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
+      <if test="user.id != null" >
         id,
       </if>
-      <if test="loginName != null" >
+      <if test="user.loginName != null" >
         login_name,
       </if>
-      <if test="name != null" >
+      <if test="user.name != null" >
         name,
       </if>
-      <if test="password != null" >
+      <if test="user.password != null" >
         password,
       </if>
-      <if test="salt != null" >
+      <if test="user.salt != null" >
         salt,
       </if>
-      <if test="phone != null" >
+      <if test="user.phone != null" >
         phone,
       </if>
-      <if test="email != null" >
+      <if test="user.email != null" >
         email,
       </if>
-      <if test="userType != null" >
+      <if test="user.userType != null" >
         user_type,
       </if>
-      <if test="deleteStatus != null" >
+      <if test="user.deleteStatus != null" >
         delete_status,
       </if>
-      <if test="platformId != null" >
+      <if test="user.platformId != null" >
         platform_id,
       </if>
-      <if test="createTime != null" >
+      <if test="user.createTime != null" >
         create_time,
       </if>
-      <if test="updateTime != null" >
+      <if test="user.updateTime != null" >
         update_time,
       </if>
-      <if test="updateUserId != null" >
+      <if test="user.updateUserId != null" >
         update_user_id,
       </if>
-      <if test="createUserId != null" >
+      <if test="user.createUserId != null" >
         create_user_id,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
+      <if test="user.id != null" >
+        #{user.id,jdbcType=INTEGER},
       </if>
-      <if test="loginName != null" >
-        #{loginName,jdbcType=VARCHAR},
+      <if test="user.loginName != null" >
+        #{user.loginName,jdbcType=VARCHAR},
       </if>
-      <if test="name != null" >
-        #{name,jdbcType=VARCHAR},
+      <if test="user.name != null" >
+        #{user.name,jdbcType=VARCHAR},
       </if>
-      <if test="password != null" >
-        #{password,jdbcType=VARCHAR},
+      <if test="user.password != null" >
+        #{user.password,jdbcType=VARCHAR},
       </if>
-      <if test="salt != null" >
-        #{salt,jdbcType=VARCHAR},
+      <if test="user.salt != null" >
+        #{user.salt,jdbcType=VARCHAR},
       </if>
-      <if test="phone != null" >
-        #{phone,jdbcType=VARCHAR},
+      <if test="user.phone != null" >
+        #{user.phone,jdbcType=VARCHAR},
       </if>
-      <if test="email != null" >
-        #{email,jdbcType=VARCHAR},
+      <if test="user.email != null" >
+        #{user.email,jdbcType=VARCHAR},
       </if>
-      <if test="userType != null" >
-        #{userType,jdbcType=TINYINT},
+      <if test="user.userType != null" >
+        #{user.userType,jdbcType=TINYINT},
       </if>
-      <if test="deleteStatus != null" >
-        #{deleteStatus,jdbcType=TINYINT},
+      <if test="user.deleteStatus != null" >
+        #{user.deleteStatus,jdbcType=TINYINT},
       </if>
-      <if test="platformId != null" >
-        #{platformId,jdbcType=INTEGER},
+      <if test="user.platformId != null" >
+        #{user.platformId,jdbcType=INTEGER},
       </if>
-      <if test="createTime != null" >
-        #{createTime,jdbcType=TIMESTAMP},
+      <if test="user.createTime != null" >
+        #{user.createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updateTime != null" >
-        #{updateTime,jdbcType=TIMESTAMP},
+      <if test="user.updateTime != null" >
+        #{user.updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updateUserId != null" >
-        #{updateUserId,jdbcType=INTEGER},
+      <if test="user.updateUserId != null" >
+        #{user.updateUserId,jdbcType=INTEGER},
       </if>
-      <if test="createUserId != null" >
-        #{createUserId,jdbcType=INTEGER},
+      <if test="user.createUserId != null" >
+        #{user.createUserId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
   <update id="update" parameterType="com.cehome.cloud.user.model.po.User" >
     update perm_user
     <set >
-      <if test="loginName != null" >
-        login_name = #{loginName,jdbcType=VARCHAR},
+      <if test="user.loginName != null" >
+        login_name = #{user.loginName,jdbcType=VARCHAR},
       </if>
-      <if test="name != null" >
-        name = #{name,jdbcType=VARCHAR},
+      <if test="user.name != null" >
+        name = #{user.name,jdbcType=VARCHAR},
       </if>
-      <if test="password != null" >
-        password = #{password,jdbcType=VARCHAR},
+      <if test="user.password != null" >
+        password = #{user.password,jdbcType=VARCHAR},
       </if>
-      <if test="salt != null" >
-        salt = #{salt,jdbcType=VARCHAR},
+      <if test="user.salt != null" >
+        salt = #{user.salt,jdbcType=VARCHAR},
       </if>
-      <if test="phone != null" >
-        phone = #{phone,jdbcType=VARCHAR},
+      <if test="user.phone != null" >
+        phone = #{user.phone,jdbcType=VARCHAR},
       </if>
-      <if test="email != null" >
-        email = #{email,jdbcType=VARCHAR},
+      <if test="user.email != null" >
+        email = #{user.email,jdbcType=VARCHAR},
       </if>
-      <if test="userType != null" >
-        user_type = #{userType,jdbcType=TINYINT},
+      <if test="user.userType != null" >
+        user_type = #{user.userType,jdbcType=TINYINT},
       </if>
-      <if test="deleteStatus != null" >
-        delete_status = #{deleteStatus,jdbcType=TINYINT},
+      <if test="user.deleteStatus != null" >
+        delete_status = #{user.deleteStatus,jdbcType=TINYINT},
       </if>
-      <if test="platformId != null" >
-        platform_id = #{platformId,jdbcType=INTEGER},
+      <if test="user.platformId != null" >
+        platform_id = #{user.platformId,jdbcType=INTEGER},
       </if>
-      <if test="createTime != null" >
-        create_time = #{createTime,jdbcType=TIMESTAMP},
+      <if test="user.createTime != null" >
+        create_time = #{user.createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updateTime != null" >
-        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      <if test="user.updateTime != null" >
+        update_time = #{user.updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updateUserId != null" >
-        update_user_id = #{updateUserId,jdbcType=INTEGER},
+      <if test="user.updateUserId != null" >
+        update_user_id = #{user.updateUserId,jdbcType=INTEGER},
       </if>
-      <if test="createUserId != null" >
-        create_user_id = #{createUserId,jdbcType=INTEGER},
+      <if test="user.createUserId != null" >
+        create_user_id = #{user.createUserId,jdbcType=INTEGER},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{user.id,jdbcType=INTEGER}
   </update>
   <select id="selectByLoginName" resultMap="BaseResultMap">
     select

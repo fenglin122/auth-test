@@ -1,6 +1,7 @@
 package com.cehome.cloud.user.model.request;
 
 import com.alibaba.fastjson.JSON;
+import com.cehome.utils.FastjsonUtils;
 
 /**
  * Created by hyl on 2019/04/09
@@ -16,7 +17,7 @@ public class ResourceReqDto {
     private String description;
 
     /**
-     * 权限ID
+     * 菜单权限ID
      */
     private Integer pid;
 
@@ -72,6 +73,6 @@ public class ResourceReqDto {
 
     @Override
     public String toString() {
-        return JSON.toJSONString(this);
+        return FastjsonUtils.toJSONString(this);
     }
 }

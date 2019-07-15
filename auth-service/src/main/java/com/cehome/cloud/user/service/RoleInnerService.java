@@ -63,8 +63,8 @@ public class RoleInnerService {
     }
 
     @Transactional(rollbackFor={Exception.class})
-    public int deleteById(Integer id, Integer tenantId) {
-        return roleMapper.deleteById(id,tenantId);
+    public int deleteById(Integer id) {
+        return roleMapper.deleteById(id);
     }
 
     @Transactional(rollbackFor={Exception.class})
@@ -84,8 +84,8 @@ public class RoleInnerService {
         return roleMapper.update(role);
     }
 
-    public List<Role> listAll(Integer tenantId) {
-        return roleMapper.selectAll(tenantId);
+    public List<Role> listAll() {
+        return roleMapper.selectAll();
     }
 
     public Page<Role> search(String name, Integer status, Integer platformId, Integer pageIndex, Integer pageSize) {

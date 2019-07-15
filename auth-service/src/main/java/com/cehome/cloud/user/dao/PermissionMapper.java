@@ -9,11 +9,11 @@ import java.util.List;
 public interface PermissionMapper  extends BaseMapper{
     int deleteById(@Param("id") Integer id);
 
-    int insert(@Param("permission") Permission permission);
+    int insert(@Param("perm") Permission permission);
 
     Permission selectById(@Param("id") Integer id);
 
-    int update(@Param("permission") Permission permission);
+    int update(@Param("perm") Permission permission);
 
     List<Permission> permissionAll();
 

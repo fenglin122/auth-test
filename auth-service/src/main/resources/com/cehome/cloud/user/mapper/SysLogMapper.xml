@@ -9,12 +9,12 @@
     <result column="client_ip" property="clientIp" jdbcType="VARCHAR" />
     <result column="create_time" property="createTime" jdbcType="BIGINT" />
   </resultMap>
-  <sql id="Base_Column_List" >
+  <sql id="allColumn" >
     id, login_name, role_name, opt_content, client_ip, create_time
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
-    <include refid="Base_Column_List" />
+    <include refid="allColumn" />
     from perm_sys_log
     where id = #{id,jdbcType=BIGINT}
   </select>

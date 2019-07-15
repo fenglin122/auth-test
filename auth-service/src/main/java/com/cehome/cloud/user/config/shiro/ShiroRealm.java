@@ -82,7 +82,7 @@ public class ShiroRealm extends AuthorizingRealm {
         if (shiroUser != null) {
             //管理员具有全部角色
             if (JwtConstants.USER_ADMIN_LOGIN_NAME.equalsIgnoreCase(shiroUser.getLoginName())) {
-                roles = roleInnerService.listAll(1).stream().map(role -> role.getId() + "").collect(Collectors.toCollection(HashSet::new));
+                roles = roleInnerService.listAll().stream().map(role -> role.getId() + "").collect(Collectors.toCollection(HashSet::new));
                 perms = resourceInnerService.listAll().stream().map(resource -> resource.getPerms()).collect(Collectors.toCollection(HashSet::new));
             } else {
                 // 读取用户的url和角色

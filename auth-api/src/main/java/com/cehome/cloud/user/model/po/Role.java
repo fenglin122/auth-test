@@ -13,7 +13,7 @@ public class Role {
 
     private Integer deleteStatus;
 
-    private Integer paltformId;
+    private Integer platformId;
 
     private Date createTime;
 
@@ -63,12 +63,12 @@ public class Role {
         this.deleteStatus = deleteStatus;
     }
 
-    public Integer getPaltformId() {
-        return paltformId;
+    public Integer getPlatformId() {
+        return platformId;
     }
 
-    public void setPaltformId(Integer paltformId) {
-        this.paltformId = paltformId;
+    public void setPlatformId(Integer platformId) {
+        this.platformId = platformId;
     }
 
     public Date getCreateTime() {

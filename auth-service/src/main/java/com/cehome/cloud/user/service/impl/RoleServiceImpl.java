@@ -8,6 +8,7 @@ import com.cehome.cloud.user.service.RoleInnerService;
 import com.cehome.cloud.user.util.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -33,19 +34,19 @@ public class RoleServiceImpl implements RoleService {
         return roleInnerService.update(role);
     }
 
-    public Role getById(Integer roleId) {
+    public Role getById(@RequestParam("roleId") Integer roleId) {
         return roleInnerService.selectById(roleId);
     }
 
-    public Integer deleteById(Integer id) {
-        return roleInnerService.deleteById(id,1);
+    public Integer deleteById(@RequestParam("id") Integer id) {
+        return roleInnerService.deleteById(id);
     }
 
-    public Page<Role> page(String name, Integer status, Integer pageNo, Integer pageSize) {
-        return roleInnerService.search(name,status,1,pageNo,pageSize);
+    public Page<Role> page(@RequestParam("name") String name, @RequestParam("status") Integer status, @RequestParam("pageIndex") Integer pageIndex, @RequestParam("pageSize") Integer pageSize) {
+        return roleInnerService.search(name,status,1,pageIndex,pageSize);
     }
 
     public List<Role> listAll() {
-        return roleInnerService.listAll(1);
+        return roleInnerService.listAll();
     }
 }

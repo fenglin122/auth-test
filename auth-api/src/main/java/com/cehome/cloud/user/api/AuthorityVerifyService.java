@@ -20,5 +20,5 @@ public interface AuthorityVerifyService {
      * @return
      */
     @RequestMapping(value = UserAPI.PATH_AUTHORITY + "/isAuthority",method = RequestMethod.GET)
-    public Boolean isAuthority(@RequestParam(value = "url",defaultValue = "") String url);
+    Boolean isAuthority(@RequestParam(value = "url",defaultValue = "") String url);
 }

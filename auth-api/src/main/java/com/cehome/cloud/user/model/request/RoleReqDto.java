@@ -1,6 +1,6 @@
 package com.cehome.cloud.user.model.request;
 
-import com.alibaba.fastjson.JSON;
+import com.cehome.utils.FastjsonUtils;
 
 /**
  * Created by hyl on 2019/04/10
@@ -28,7 +28,7 @@ public class RoleReqDto {
     /**
      * 平台ID
      */
-    private Integer paltformId;
+    private Integer platformId;
 
     public Integer getId() {
         return id;
@@ -71,16 +71,16 @@ public class RoleReqDto {
     }
 
 
-    public Integer getPaltformId() {
-        return paltformId;
+    public Integer getPlatformId() {
+        return platformId;
     }
 
-    public void setPaltformId(Integer paltformId) {
-        this.paltformId = paltformId;
+    public void setPlatformId(Integer platformId) {
+        this.platformId = platformId;
     }
 
     @Override
     public String toString() {
-        return JSON.toJSONString(this);
+        return FastjsonUtils.toJSONString(this);
     }
 }

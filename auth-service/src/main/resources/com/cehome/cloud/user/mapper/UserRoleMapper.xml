@@ -31,7 +31,7 @@
   </insert>
   <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
-    <include refid="Base_Column_List" />
+    <include refid="allColumn" />
     from perm_user_role
     where id = #{id,jdbcType=INTEGER}
   </select>

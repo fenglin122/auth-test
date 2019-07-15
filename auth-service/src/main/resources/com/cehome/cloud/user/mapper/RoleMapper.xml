@@ -7,7 +7,7 @@
     <result column="seq" property="seq" jdbcType="TINYINT" />
     <result column="description" property="description" jdbcType="VARCHAR" />
     <result column="delete_status" property="deleteStatus" jdbcType="TINYINT" />
-    <result column="paltform_id" property="paltformId" jdbcType="INTEGER" />
+    <result column="paltform_id" property="platformId" jdbcType="INTEGER" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
     <result column="permission_role_id" property="permissionRoleId" jdbcType="VARCHAR" />
@@ -33,102 +33,102 @@
   <insert id="insert" parameterType="com.cehome.cloud.user.model.po.Role" >
     insert into perm_role
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
+      <if test="role.id != null" >
         id,
       </if>
-      <if test="name != null" >
+      <if test="role.name != null" >
         name,
       </if>
-      <if test="seq != null" >
+      <if test="role.seq != null" >
         seq,
       </if>
-      <if test="description != null" >
+      <if test="role.description != null" >
         description,
       </if>
-      <if test="deleteStatus != null" >
+      <if test="role.deleteStatus != null" >
         delete_status,
       </if>
-      <if test="paltformId != null" >
+      <if test="role.platformId != null" >
         paltform_id,
       </if>
-      <if test="createTime != null" >
+      <if test="role.createTime != null" >
         create_time,
       </if>
-      <if test="updateTime != null" >
+      <if test="role.updateTime != null" >
         update_time,
       </if>
-      <if test="permissionRoleId != null" >
+      <if test="role.permissionRoleId != null" >
         permission_role_id,
       </if>
-      <if test="isAdmin != null" >
+      <if test="role.isAdmin != null" >
         is_admin,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
+      <if test="role.id != null" >
+        #{role.id,jdbcType=INTEGER},
       </if>
-      <if test="name != null" >
-        #{name,jdbcType=VARCHAR},
+      <if test="role.name != null" >
+        #{role.name,jdbcType=VARCHAR},
       </if>
-      <if test="seq != null" >
-        #{seq,jdbcType=TINYINT},
+      <if test="role.seq != null" >
+        #{role.seq,jdbcType=TINYINT},
       </if>
-      <if test="description != null" >
-        #{description,jdbcType=VARCHAR},
+      <if test="role.description != null" >
+        #{role.description,jdbcType=VARCHAR},
       </if>
-      <if test="deleteStatus != null" >
-        #{deleteStatus,jdbcType=TINYINT},
+      <if test="role.deleteStatus != null" >
+        #{role.deleteStatus,jdbcType=TINYINT},
       </if>
-      <if test="paltformId != null" >
-        #{paltformId,jdbcType=INTEGER},
+      <if test="role.platformId != null" >
+        #{role.platformId,jdbcType=INTEGER},
       </if>
-      <if test="createTime != null" >
-        #{createTime,jdbcType=TIMESTAMP},
+      <if test="role.createTime != null" >
+        #{role.createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updateTime != null" >
-        #{updateTime,jdbcType=TIMESTAMP},
+      <if test="role.updateTime != null" >
+        #{role.updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="permissionRoleId != null" >
-        #{permissionRoleId,jdbcType=VARCHAR},
+      <if test="role.permissionRoleId != null" >
+        #{role.permissionRoleId,jdbcType=VARCHAR},
       </if>
-      <if test="isAdmin != null" >
-        #{isAdmin,jdbcType=TINYINT},
+      <if test="role.isAdmin != null" >
+        #{role.isAdmin,jdbcType=TINYINT},
       </if>
     </trim>
   </insert>
   <update id="update" parameterType="com.cehome.cloud.user.model.po.Role" >
     update perm_role
     <set >
-      <if test="name != null" >
-        name = #{name,jdbcType=VARCHAR},
+      <if test="role.name != null" >
+        name = #{role.name,jdbcType=VARCHAR},
       </if>
-      <if test="seq != null" >
-        seq = #{seq,jdbcType=TINYINT},
+      <if test="role.seq != null" >
+        seq = #{role.seq,jdbcType=TINYINT},
       </if>
-      <if test="description != null" >
-        description = #{description,jdbcType=VARCHAR},
+      <if test="role.description != null" >
+        description = #{role.description,jdbcType=VARCHAR},
       </if>
-      <if test="deleteStatus != null" >
-        delete_status = #{deleteStatus,jdbcType=TINYINT},
+      <if test="role.deleteStatus != null" >
+        delete_status = #{role.deleteStatus,jdbcType=TINYINT},
       </if>
-      <if test="paltformId != null" >
-        paltform_id = #{paltformId,jdbcType=INTEGER},
+      <if test="role.platformId != null" >
+        paltform_id = #{role.platformId,jdbcType=INTEGER},
       </if>
-      <if test="createTime != null" >
-        create_time = #{createTime,jdbcType=TIMESTAMP},
+      <if test="role.createTime != null" >
+        create_time = #{role.createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updateTime != null" >
-        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      <if test="role.updateTime != null" >
+        update_time = #{role.updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="permissionRoleId != null" >
-        permission_role_id = #{permissionRoleId,jdbcType=VARCHAR},
+      <if test="role.permissionRoleId != null" >
+        permission_role_id = #{role.permissionRoleId,jdbcType=VARCHAR},
       </if>
-      <if test="isAdmin != null" >
-        is_admin = #{isAdmin,jdbcType=TINYINT},
+      <if test="role.isAdmin != null" >
+        is_admin = #{role.isAdmin,jdbcType=TINYINT},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{role.id,jdbcType=INTEGER}
   </update>
   <select id="selectAll" resultMap="BaseResultMap">
     select

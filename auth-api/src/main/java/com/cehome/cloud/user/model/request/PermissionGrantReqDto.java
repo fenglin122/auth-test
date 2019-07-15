@@ -1,6 +1,7 @@
 package com.cehome.cloud.user.model.request;
 
 import com.alibaba.fastjson.JSON;
+import com.cehome.utils.FastjsonUtils;
 
 import java.util.List;
 
@@ -31,6 +32,6 @@ public class PermissionGrantReqDto {
 
     @Override
     public String toString() {
-        return JSON.toJSONString(this);
+        return FastjsonUtils.toJSONString(this);
     }
 }

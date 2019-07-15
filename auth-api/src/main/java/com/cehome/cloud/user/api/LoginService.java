@@ -16,5 +16,5 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public interface LoginService {
 
     @RequestMapping(value = "/login",method = RequestMethod.POST)
-    public User login(@RequestBody LoginReqDto loginReqDto);
+    User login(@RequestBody LoginReqDto loginReqDto);
 }
